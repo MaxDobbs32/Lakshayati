@@ -1,7 +1,7 @@
 # Lakshayati
   Lakshayati is a minimalistic programming language that executes strings as code. At the beginning of this project, I wondered how small a language can be, if its grammar must allow speakers to express any idea. Such a language would likely have the ability to define new words, join characters into words and words into sentences, and to use the words defined. With the grammar limited to only these features, how successful could such a language be?
 
-  The Lakshayati programming language was created to model this idea. It is a minimalist, esoteric programming language whose only object type is strings. For any who are unfamiliar with the term, strings are essentially any form of text on your computer. Lakshayati can perform three operations with these strings:
+  The Lakshayati programming language was created to model this idea. It is an esoteric programming language whose only object type is strings. For any who are unfamiliar with the term, strings are essentially any form of text on your computer. Lakshayati can perform three operations with these strings:
 -	assign string values to variables (defining a new word) 
 -	concatenating strings (joining characters and words together)
 -	executing strings as code
