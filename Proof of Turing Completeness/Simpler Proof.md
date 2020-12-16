@@ -3,6 +3,7 @@ Lakshayati is Turing-complete, meaning it can perform any computable function. T
 If you are curious why SmallF is Turing-complete, http://samuelhughes.com/boof/ shows an applicable proof relative to another Turing-complete language, BrainF. Then http://www.hevanet.com/cristofd/brainfuck/utm.b contains a proof of why BrainF is Turing-complete.
 
 
+
 current_values_location "vv"
 current_position "pp"
 vv ""
