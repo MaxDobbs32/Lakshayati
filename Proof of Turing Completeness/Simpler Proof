@@ -1,12 +1,6 @@
-Lakshayati is Turing-complete, meaning it can perform any computable function. To
-prove this, I have recreated another Turing-complete language called SmallF in
-Lakshayati. SmallFs < > and * operations can be typed at the bottom of this document,
-and SmallFs while-loops are emulated with recursion.
+Lakshayati is Turing-complete, meaning it can perform any computable function. To prove this, I have recreated another Turing-complete language called SmallF in Lakshayati. SmallFs < > and * operations can be typed at the bottom of this document, and SmallFs while-loops are emulated with recursion.
 
-If you are curious why SmallF is Turing-complete, http://samuelhughes.com/boof/ shows
-an applicable proof relative to another Turing-complete language, BrainF. Then
-http://www.hevanet.com/cristofd/brainfuck/utm.b contains a proof of why BrainF is
-Turing-complete.
+If you are curious why SmallF is Turing-complete, http://samuelhughes.com/boof/ shows an applicable proof relative to another Turing-complete language, BrainF. Then http://www.hevanet.com/cristofd/brainfuck/utm.b contains a proof of why BrainF is Turing-complete.
 
 
 current_values_location "vv"
