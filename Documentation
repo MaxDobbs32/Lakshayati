@@ -1,0 +1,179 @@
+Strings
+Strings are denoted by quotation marks on both ends:
+	"This is a string."
+	「This is also a string.」
+
+Lakshayati organizes quotes by family. For English speakers, the single quote ' ‘ and ’ are all treated the same in Lakshayati, but they are in a distinct family from the double quote " “ and ”. Since they are treated the same, ” can begin a string and “ can end it, but this is not true for all quotation marks. For example, regarding CJK scripts,「 must mark the start of a string and 」must conclude it. A list of quote families based on whether order matters can be seen here:
+
+
+Order does not matter:	
+Order matters
+(former must begin a string, latter must end it)
+
+" “　” „	「　」
+' ‘　’ ‚	『　』
+«　»	《　》
+‹　›	〈　〉
+* Note that ‚ is a quotation mark despite looking almost identical to a comma , Commas cannot denote strings in Lakshayati.
+
+	But what should a programmer do if they want quotation marks within the string? There are several methods for doing this, and they bear much in common with the methods used in other programming languages. Read whichever section applies to you based on the category of quotation mark that you will rely on.
+
+
+Quotes in strings if order does not matter…
+There are two possible methods for including quotation marks within strings:
+
+a)	Any odd number of quotations marks may start a string, and then the same number of quotes in the same family may conclude a string.
+
+ex:   '''''The quotes ' and ''' appear in the string.'''''
+ result:   The quotes ' and ''' appear in the string.
+
+
+b)	Type a slash ( / or ／ ) before a quotation mark to indicate it is within the string, not concluding the string. The Lakshayati interpreter will know to remove the slash.
+
+ex:   "/"Greetings, friend!/" Celia exclaimed."
+ result:   "Greetings, friend!" Celia exclaimed.
+
+ex:   """／"Praise be," said the preacher."""
+ result:   "Praise be," said the preacher.
+
+Notice how the first " in the last string requires a slash while the second does not. Without the slash, Lakshayati would detect an even number of quotes """", which would mark an empty string. Additionally, if one wants to clarify a slash is not to be removed, they should type two slashes.
+
+ex:   "One slash will appear at the end of this string //"
+ result:   One slash will appear at the end of this string /
+
+ex:   "///" denotes a slash coming before a quotation mark."
+ result:   /" denotes a slash coming before a quotation mark.
+
+Quotes in strings if order does matter…
+As with the previous section, there are two similar methods for including quotation marks within strings:
+
+a)	Any set of initial quotation marks may start a string, and then the same number of concluding quotation marks must end it.
+
+ex: 「「The quotes 」and「「 can appear in the string.」」
+ result:   The quotes 」and「「 can appear in the string.
+
+
+b)	Type a slash ( / or ／ ) before a quotation mark to indicate it is within the string, rather than beginning or concluding the string. The Lakshayati interpreter will know to remove the slash.
+
+ex:   「／「Greetings, friend!/」 Celia exclaimed.」
+ result:   「Greetings, friend!」 Celia exclaimed.
+
+ex:   「「「／「Praise be, 」 said the preacher. 」」」
+ result:   「Praise be,」 said the preacher.
+
+Note that the「 in the last string requires a slash, since Lakshayati would otherwise detect「「「「 as the onset of a string. Furthermore, if someone wants to clarify a slash is not to be removed, they should type two slashes.
+
+ex: 「One slash will appear at the end of this string ／／」
+ result:   One slash will appear at the end of this string ／
+
+ex: 「///「 denotes a slash coming before a quotation mark. 」
+     result:   /「 denotes a slash coming before a quotation mark.
+
+Lines of Code
+
+In Lakshayati, a line of code terminates when there is a newline character outside of a string:
+
+	Suppose this is valid code "The
+     line will not be terminated
+     until all strings conclude" "and
+     there is a newline character at the end."
+     This is a new line of Lakshayati
+
+An exeption to this rule is, if all strings are concluded, Lakshayati will terminate the last line of a program even if a newline character is not technically found at the end. If the last string in a program is not concluded, you will receive an error message. This is the same system many other programming languages use.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Variables
+
+	Variables in Laksayati can consist of any set of Unicode characters, except whitespace characters and quotation marks in the 8 families. Additionally, the only variable that may contain a slash is the output variable.
+
+Variables are assigned to a string value by typing the name of the variable then the string on a line:
+
+ex:   first_var "Hello"
+
+Variables can have string values as well:
+
+ex:   second_var my_var
+
+second_var currently has the same value as first_var, which is "Hello"
+
+
+Multiple string values can be placed on a line if they are separated with spaces, and they will be joined together:
+
+	ex:   final_var my_var ", " "world!"
+
+final_var is given the value of first_var + ", " + "world!", which is,
+"Hello, world!"
+
+Finally, string values can be displayed to the screen by them to assigning the variable / (or ／).
+
+	ex:   / final_var
+
+This displays "Hello, world!" to the screen.
+
+
+
+
+
+
+Executing Strings
+
+If the first (non-whitespace) character on a line is a quote, then all strings on the line will be joined together, and then the value of that string will be executed as Lakshayati code.
+
+ex:   'my_var ' "'String within a string.'
+     / my_var"
+
+First, the two strings are joined together, yielding the value:
+
+"my_var 'String within a string.'
+     / my_var"
+
+Since the line begins with a quote, the string above is treated as Lakshayati code, and the output becomes:
+
+String within a string.
+
+If variable is on a line by itself, its string value is also executed:
+
+	ex:   my_var "/ 'String within a string'"
+         my_var
+
+my_var is on a line by itself, and the resulting output is the same as before.
+
+Finally, if programmer wants to include a variable’s string value at the beginning of a line with other string values and wants to evaluate their combined string value, they can simply begin the line with an empty string:
+
+	ex:   first_var "/ '"
+         second_var "String within a string'"
+         "" first_var second_var
+
+The empty string has no value, so first_var and second_var are joined together and executed. The output, again, becomes "String within a string"
+
+Commentary
+
+This is the last and simplest section of Lakshayati’s documentation. If you would like to create comments within the program, just make your comment one or more long empty variable(s):
+
+	This_is_a_comment._So_long_as_it_is_not_assigned_a_value,_it
+will_not_have_any_effect_on_your_program.
+
+
+And that is everything you need to program in Lakshayati!
