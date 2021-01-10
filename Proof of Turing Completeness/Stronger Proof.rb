@@ -1,6 +1,6 @@
 =begin
 
-The previous document is easier to read and provides context for this program, so I recommend checking it out.
+The previous document "Simpler Proof" is easier to read and provides context for this program, so I recommend checking it out.
 
 Lakshayati has some features that make it easier to program in. However, if it did not have these features, would it still be
 Turing-complete? To answer this question, I recreated the program found in the other proof in Ruby. For an additional challenge,
