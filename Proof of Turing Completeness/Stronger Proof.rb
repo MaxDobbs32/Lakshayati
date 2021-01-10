@@ -2,7 +2,7 @@
 
 The previous document "Simpler Proof" is easier to read and provides context for this program, so I recommend checking it out.
 
-Lakshayati has some features that make it easier to program in. However, if it did not have these features, would it still be
+Lakshayati has features that make it somewhat easier to program in. However, if it did not have these features, would it still be
 Turing-complete? To answer this question, I recreated the program found in the other proof in Ruby. For an additional challenge,
 I decided all variable names can only contain the letter "o". The program works as intended, so, even with these contraints,
 Lakshayati remains Turing-complete.
