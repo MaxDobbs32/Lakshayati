@@ -17,71 +17,70 @@ pppp ""
 bool_pp "true"
 
 change_string '''"""
-  if_zero 'true'
-  true 「
-    """ current_values_location """ ""
-    if_zero ""
-  」
-  """ current_values_location """
-  true '""" current_values_location """ "true"'
-  if_zero
+    if_zero 'true'
+    true 「
+        """ current_values_location """ ""
+        if_zero ""
+    」
+    """ current_values_location """
+    true '""" current_values_location """ "true"'
+    if_zero
 """'''
 
 "* " change_string
 
 back_function """
-  true '''
-    / "Error: Data pointer commanded to move back relative to the starting position."
-  '''
-  pp
+    true '''
+        / "Error: Data pointer commanded to move back relative to the starting position."
+    '''
+    pp
 """
 
 forward_string '''"""
-  true 「
-    bool_""" current_position """ ''
-    bool_p""" current_position """ 'true'
-    """ current_values_location """v ''
-    back_function back_function 『
-      true »
-        """ current_position """pp ""
-        """ current_position """p ""
-        """ current_position """ "true"
-        current_position '""" current_position """'
-        current_values_location '""" current_values_location """'
-      «
-      """ current_position """p
-    』
-  」
-  bool_""" current_position """
-  """ current_position """ ""
-  """ current_position """p "true"
-  """ current_position """pp ""
-  current_values_location current_values_location "v"
-  current_position current_position "p"
+    true 「
+        bool_""" current_position """ ''
+        bool_p""" current_position """ 'true'
+        """ current_values_location """v ''
+        back_function back_function 『
+        true »
+            """ current_position """pp ""
+            """ current_position """p ""
+            """ current_position """ "true"
+            current_position '""" current_position """'
+            current_values_location '""" current_values_location """'
+        «
+        """ current_position """p
+        』
+    」
+    bool_""" current_position """
+    """ current_position """ ""
+    """ current_position """p "true"
+    """ current_position """pp ""
+    current_values_location current_values_location "v"
+    current_position current_position "p"
 """'''
 
 > '
-  "forward_function " forward_string
-  forward_function
-  "* " change_string
+    "forward_function " forward_string
+    forward_function
+    "* " change_string
 '
 
 < """
-  back_function
-  "* " change_string
+    back_function
+    "* " change_string
 """
 
 . """
-  if_zero "true"
-  true '
-    if_zero ""
+    if_zero "true"
+    true '
+        if_zero ""
 / / "1
-"
-  '
-  current_values_location
+"'
+    current_values_location
 true '/ / "0
 "'
-  if_zero
+    if_zero
 """
 
 
@@ -97,25 +96,25 @@ At_this_point_everthing_is_already_defined._The_code_below_is_just_an_example_of
 <
 
 fff '''
-  true """
-    <
-    .
-    fff
-  """
-  current_values_location
+    true """
+        <
+        .
+        fff
+    """
+    current_values_location
 '''
 
 ff '''
-  true """
-    >
-    .
-    fff
-    >
-    *
-    >
-    ff
-  """
-  current_values_location
+    true """
+        >
+        .
+        fff
+        >
+        *
+        >
+        ff
+    """
+    current_values_location
 '''
 
 ff
