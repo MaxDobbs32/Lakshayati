@@ -75,10 +75,10 @@ forward_string '''"""
     if_zero "true"
     true '
         if_zero ""
-/ / "1
+        / / "1
 "'
     current_values_location
-true '/ / "0
+    true '/ / "0
 "'
     if_zero
 """
