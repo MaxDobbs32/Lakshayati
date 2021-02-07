@@ -6,7 +6,7 @@ Lakshayati was created to model this idea. It is an esoteric programming languag
 -	concatenating strings (joining characters and words together)
 -	executing strings as code
 
-The role of string execution is more complex. By executing strings, programmers not only define new concepts, but can use them freely. It is similar to defining new functions in other programming languages, only Lakshayati structures these functions like strings.
+The role of string execution is more complex. By executing strings, programmers not only define new concepts, but can use them freely. It is similar to defining new functions in other programming languages, only Lakshayati structures these functions as strings.
 
 With these three operations, I have proven Lakshayati is Turing-complete (i.e. it can theoretically perform any computable function). And, while I lack the linguistic expertise to show as much, this fact may suggest human beings can technically communicate any idea with little more than the building blocks of linguistics. In any case, I feel that Lakshayati is a unique programming language its own right, which is why I would like to document its features here.
 
