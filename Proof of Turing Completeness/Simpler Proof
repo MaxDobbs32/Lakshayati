@@ -17,14 +17,14 @@ pppp ""
 bool_pp "true"
 
 change_string '''"""
-    if_zero 'true'
+    is_zero 'true'
     true 「
         """ current_values_location """ ""
-        if_zero ""
+        is_zero ""
     」
     """ current_values_location """
     true '""" current_values_location """ "true"'
-    if_zero
+    is_zero
 """'''
 
 "* " change_string
@@ -72,15 +72,15 @@ forward_string '''"""
 """
 
 . """
-    if_zero "true"
+    is_zero "true"
     true '
-        if_zero ""
+        is_zero ""
         / / "1
 "'
     current_values_location
     true '/ / "0
 "'
-    if_zero
+    is_zero
 """
 
 
