@@ -11,7 +11,7 @@ string '- ' q2 '
 ---- ' q2 'q3 ' q1 q3 q1 q2 '
 ' '-----' ' ' q2 ----- q2
 
-
+keep_going? loop
 |----- 「keep_going? ''」
 i '-'
 
@@ -20,7 +20,6 @@ loop 「
     string string '
 ' line
     'line ' i
-    keep_going? loop
     '|' i
     i i '-'
     keep_going?
@@ -42,7 +41,7 @@ string '- ' q2 '
 ---- ' q2 'q3 ' q1 q3 q1 q2 '
 ' '-----' ' ' q2 ----- q2
 
-
+keep_going? loop
 |----- 「keep_going? ''」
 i '-'
 
@@ -51,7 +50,6 @@ loop 「
     string string '
 ' line
     'line ' i
-    keep_going? loop
     '|' i
     i i '-'
     keep_going?
