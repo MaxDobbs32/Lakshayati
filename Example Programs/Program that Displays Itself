@@ -1,0 +1,60 @@
+- "
+"
+-- »q1 "'"»
+--- 'q2 »"»'
+---- "q3 '»'"
+----- "
+output '- ' q2 '
+' q2 '
+-- ' q3 'q1 ' q2 q1 q2 q3 '
+--- ' q1 'q2 ' q3 q2 q3 q1 '
+---- ' q2 'q3 ' q1 q3 q1 q2 '
+----- ' q2 ----- q2
+
+|----- 「keep_going? ''」
+i '-'
+
+loop 「
+    'line ' i
+    output output '
+' line
+    'line ' i
+    '|' i
+    i i '-'
+    keep_going?
+」
+keep_going? loop
+loop
+
+
+/ output"
+
+
+q1 "'"
+q2 »"»
+q3 '»'
+
+output '- ' q2 '
+' q2 '
+-- ' q3 'q1 ' q2 q1 q2 q3 '
+--- ' q1 'q2 ' q3 q2 q3 q1 '
+---- ' q2 'q3 ' q1 q3 q1 q2 '
+----- ' q2 ----- q2
+
+|----- 「keep_going? ''」
+i '-'
+
+loop 「
+    'line ' i
+    output output '
+' line
+    'line ' i
+    '|' i
+    i i '-'
+    keep_going?
+」
+keep_going? loop
+loop
+
+
+/ output
