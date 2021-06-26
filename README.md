@@ -14,4 +14,4 @@ If you would like to test out the language for yourself, you can find an online 
 
 You can also download Lakshayati.java to have an interpreter on your computer. In addition to running programs, the latter is capable of opening and saving programs as .txt files. I recommend using an IDE to run it. (I can't get it to work properly with Command Prompt)
 
-If there are any issues, feel free to contact me.
+Make sure you agree with the MIT License attached before using either. If there are any issues, feel free to contact me.
