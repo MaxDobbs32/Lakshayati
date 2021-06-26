@@ -12,6 +12,6 @@ With these three operations, I have proven Lakshayati is Turing-complete (i.e. i
 
 If you would like to test out the language for yourself, you can find an online interpreter at https://lakshayati.maxdobbs32.repl.co/.
 
-You can also download a Java interpreter at https://github.com/MaxDobbs32/Lakshayati-Java. In addition to running programs, the latter is capable of opening and saving programs as .txt files. However, I made the mistake of using GridBagLayout, and it only seems to work on Mac. I may fix the Java interpreter. Only time will tell.
+You can also download Lakshayati.java to have an interpreter on your computer. In addition to running programs, the latter is capable of opening and saving programs as .txt files. I recommend using an IDE to run it (I can't get it to work properly with the command prompt)
 
 If there are any other issues, feel free to contact me.
