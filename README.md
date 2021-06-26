@@ -12,6 +12,6 @@ With these three operations, I have proven Lakshayati is Turing-complete (i.e. i
 
 If you would like to test out the language for yourself, you can find an online interpreter at https://lakshayati.maxdobbs32.repl.co/.
 
-You can also download Lakshayati.java to have an interpreter on your computer. In addition to running programs, the latter is capable of opening and saving programs as .txt files. I recommend using an IDE to run it. (I can't get it to work properly with Command Prompt)
+You can also download Lakshayati.java to have an interpreter on your computer. In addition to running programs, the latter is capable of opening and saving programs as .txt files. I recommend using a Java IDE to run it. (I can't get it to work properly with Command Prompt)
 
 Make sure you agree with the MIT License attached before using either. If there are any issues, feel free to contact me.
