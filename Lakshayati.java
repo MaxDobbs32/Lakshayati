@@ -21,23 +21,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
 
-import javax.swing.*;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Scanner;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.WindowConstants;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.awt.event.*;
+import java.io.*;
+import java.nio.file.*;
+import java.util.*;
+import javax.swing.*;
 
 class Lakshayati extends Thread {
 
@@ -51,10 +40,11 @@ class Lakshayati extends Thread {
 
     public static final String directory = "Files 文件 Archivos" + File.separator;
     public static boolean bool_continue_program;
+    public static boolean bool_no_program_running = true;
     public static boolean bool_change_format = true;
     public static Hashtable<String, String> variables = new Hashtable<String, String>();
-    public static List<List<String>> list_of_terms = new ArrayList<List<String>>();
-    public static List<List<Boolean>> list_of_types = new ArrayList<List<Boolean>>();
+    public static LinkedList<LinkedList<String>> list_of_terms = new LinkedList<LinkedList<String>>();
+    public static LinkedList<LinkedList<Boolean>> list_of_types = new LinkedList<LinkedList<Boolean>>();
     public static JTextArea output = new JTextArea(12, 48);
     public static JButton play_button = new JButton();
     public static String most_recent_file = "";
@@ -63,8 +53,8 @@ class Lakshayati extends Thread {
         int line_iterator = 0;
         while (line_iterator < 251 && bool_continue_program && list_of_types.size() != 0 &&
                 list_of_types.size() <= memory_limit) {
-            List<String> line_of_terms = list_of_terms.get(0);
-            List<Boolean> parsed_line_of_code = list_of_types.get(0);
+            LinkedList<String> line_of_terms = list_of_terms.get(0);
+            LinkedList<Boolean> parsed_line_of_code = list_of_types.get(0);
             list_of_terms.remove(0);
             list_of_types.remove(0);
             if (parsed_line_of_code.size() != 1) {
@@ -113,7 +103,6 @@ class Lakshayati extends Thread {
             thread.start();
         } else {
             bool_continue_program = false;
-            bool_change_format = true;
             if (list_of_types.size() > memory_limit)
                 output.setText("Error: The recursion limit has been exceeded\n\n错误：已超过递归限制\n\n" +
                         "Error: Se superó el límite de recursividad");
@@ -121,12 +110,14 @@ class Lakshayati extends Thread {
             list_of_types.clear();
             variables.clear();
             play_button.setText("▶");
+            bool_change_format = true;
+            bool_no_program_running = true;
         }
     }
 
     public static void organize_code(String code_string) {
-        list_of_terms.add(0, new ArrayList<String>());
-        list_of_types.add(0, new ArrayList<Boolean>());
+        list_of_terms.add(0, new LinkedList<String>());
+        list_of_types.add(0, new LinkedList<Boolean>());
         String term = "";
         boolean bool_outside_string = true;
         boolean bool_analyzing_string = false;
@@ -145,8 +136,8 @@ class Lakshayati extends Thread {
                 else if (current_character == '\n') {
                     if (list_of_types.get(position_in_list).size() != 0) {
                         position_in_list++;
-                        list_of_terms.add(position_in_list, new ArrayList<String>());
-                        list_of_types.add(position_in_list, new ArrayList<Boolean>());
+                        list_of_terms.add(position_in_list, new LinkedList<String>());
+                        list_of_types.add(position_in_list, new LinkedList<Boolean>());
                     }
                     i++;
                 } else if (current_character == '"' || current_character == '“' || current_character == '”' ||
@@ -455,7 +446,7 @@ class Lakshayati extends Thread {
         play_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!bool_continue_program) {
+                if (bool_no_program_running && !bool_continue_program) {
                     bool_change_format = false;
                     if (code.getText().replace(" ", "").replace("　", "").replace("\n", "").replace("\t", "").length()
                             != 0) {
@@ -466,6 +457,7 @@ class Lakshayati extends Thread {
                         if (bool_continue_program && list_of_types.size() != 0 && list_of_types.size()
                                 <= memory_limit) {
                             play_button.setText("■");
+                            bool_no_program_running = false;
                             Lakshayati thread = new Lakshayati();
                             thread.start();
                         } else {
@@ -473,6 +465,9 @@ class Lakshayati extends Thread {
                             if (list_of_types.size() > memory_limit)
                                 JOptionPane.showMessageDialog(window, "Code is too long\n\n代码太长\n\n" +
                                         "El código es demasiado largo\n", "", JOptionPane.ERROR_MESSAGE);
+                            list_of_terms.clear();
+                            list_of_types.clear();
+                            variables.clear();
                             bool_change_format = true;
                         }
                     } else {
@@ -481,11 +476,6 @@ class Lakshayati extends Thread {
                     }
                 } else {
                     bool_continue_program = false;
-                    list_of_terms.clear();
-                    list_of_types.clear();
-                    variables.clear();
-                    play_button.setText("▶");
-                    bool_change_format = true;
                 }
             }
         });
