@@ -618,9 +618,9 @@ class Lakshayati extends Thread {
                             } else
                                 bool_create = true;
                             if (bool_save) {
-                                FileWriter file_writer = new FileWriter(directory + input_file_name.getText() + ".txt");
-                                file_writer.write(code.getText());
-                                file_writer.close();
+                                PrintWriter writer = new PrintWriter(file);
+                                writer.write(code.getText());
+                                writer.close();
                                 if (bool_create)
                                     JOptionPane.showMessageDialog(window, "“" + input_file_name.getText() +
                                             "” has been created\n\n“" + input_file_name.getText() + "”已创建\n\n“"
