@@ -8,7 +8,7 @@ line_3 '       double_quote    line_3    double_quote '
 ' '
 ' line_1 '
 ' line_2 '
-' line_3 '"
+' line_3"
 
 
 single_quote　"'"
@@ -21,4 +21,4 @@ line_3 '       double_quote    line_3    double_quote '
 ' '
 ' line_1 '
 ' line_2 '
-' line_3 '
+' line_3
