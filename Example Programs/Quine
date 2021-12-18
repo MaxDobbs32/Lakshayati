@@ -1,5 +1,5 @@
-line_1 '''single_quote　"'"'''
-line_2 """double_quote　'"'"""
+line_1 '''single_quote "'"'''
+line_2 """double_quote '"'"""
 line_3 "
 / 'line_1 '    single_quote single_quote single_quote    line_1    single_quote single_quote single_quote '
 line_2 '       double_quote double_quote double_quote    line_2    double_quote double_quote double_quote '
@@ -11,8 +11,8 @@ line_3 '       double_quote    line_3    double_quote '
 ' line_3"
 
 
-single_quote　"'"
-double_quote　'"'
+single_quote "'"
+double_quote '"'
 
 / 'line_1 '    single_quote single_quote single_quote    line_1    single_quote single_quote single_quote '
 line_2 '       double_quote double_quote double_quote    line_2    double_quote double_quote double_quote '
