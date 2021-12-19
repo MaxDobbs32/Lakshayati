@@ -1,24 +1,18 @@
 /*
-
 MIT License
-
 Copyright (c) 2020 Max Dobbs
-
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction,
 including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all copies or substantial
 portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
 LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 */
 
 import java.awt.*;
@@ -393,7 +387,7 @@ class Lakshayati extends Thread {
         code.setText("/ \"Hello, world!\"");
         output.setText("Hello, world!");
         Font font_15 = new Font("Arial Unicode MS", Font.PLAIN, 15);
-        Font font_18 = new Font("Arial Unicode MS", Font.PLAIN, 18);
+        Font font_18 = new Font("Monospaced", Font.PLAIN, 18);
         play_button.setFont(font_15);
         format_button.setFont(new Font("Arial Unicode MS", Font.PLAIN, 21));
         open_file_button.setFont(font_15);
@@ -561,8 +555,8 @@ class Lakshayati extends Thread {
                                 file_reader.close();
                             } catch (FileNotFoundException a) {
                                 JOptionPane.showMessageDialog(window, "“" + input_file_name.getText() +
-                                        "” does not exist\n\n“" + input_file_name.getText() + "”不存在\n\n“"
-                                        + input_file_name.getText() + "” no existe\n", "",
+                                                "” does not exist\n\n“" + input_file_name.getText() + "”不存在\n\n“"
+                                                + input_file_name.getText() + "” no existe\n", "",
                                         JOptionPane.ERROR_MESSAGE);
                                 bool_open_file = false;
                             }
