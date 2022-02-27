@@ -1,5 +1,5 @@
-comment "Type your number in the string next to the input variable below. Only works for non-negative integers."
 input "53"
+^ "Type your number in the string next to the input variable above. Only works for non-negative integers."
 
 set_counter_A_to_1 '''
     DA "1"
