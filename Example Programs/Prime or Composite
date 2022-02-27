@@ -1,4 +1,4 @@
-input "79"
+input "53"
 ^ "Type your number in the string next to the input variable above. Only works for non-negative integers."
 
 set_counter_A_to_5 '''
