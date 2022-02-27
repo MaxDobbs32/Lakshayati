@@ -187,6 +187,7 @@ check_3 '''
     set_counter_B_to_0
     set_counter_C_to_0
     bool_B "loop_B"
+
     loop_B """
         add_B
         '"" ' counter_B ' "END_B"'
@@ -198,12 +199,15 @@ check_3 '''
         bool_B
     """
     loop_B
+
     "third_of_input " counter_C
     "" third_of_input """END_PRIME '
         bool_A ""
         loop_B ""
         / input " is a prime number."
     '"""
+
+    reset_loop_B
     loop_A
 '''
 
@@ -237,20 +241,22 @@ loop_A """
     bool_C ""
 '"""
 
-loop_B """""
-    '"" ' counter_A ''' """END_C '
-        bool_C ""'
-    """'''
-    set_counter_C_to_1
-    bool_C "loop_C"
+reset_loop_B '''''
+    loop_B """""
+        '"" ' counter_A ''' """END_C '
+            bool_C ""'
+        """'''
+        set_counter_C_to_1
+        bool_C "loop_C"
 
-    loop_C
-    '"" ' counter_A """ 'END_C ""'"""
+        loop_C
+        '"" ' counter_A """ 'END_C ""'"""
 
-    add_B
-    '"" ' counter_B ' "END_COMPOSITE"'
-    bool_B
-"""""
+        add_B
+        '"" ' counter_B ' "END_COMPOSITE"'
+        bool_B
+    """""
+'''''
 
 loop_C """
     add_B
@@ -298,6 +304,16 @@ loop_C """
 7is? '
     check_2 ""
     / "7 is a prime number."
+'
+
+11is? '
+    check_2 ""
+    / "11 is a prime number."
+'
+
+13is? '
+    check_2 ""
+    / "13 is a prime number."
 '
 
 main '
