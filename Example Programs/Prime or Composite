@@ -1,8 +1,8 @@
-input "53"
+input "79"
 ^ "Type your number in the string next to the input variable above. Only works for non-negative integers."
 
-set_counter_A_to_1 '''
-    DA "1"
+set_counter_A_to_5 '''
+    DA "5"
     counter_A "DA"
     current_digit_A "DA"
     largest_digit_A "|DA"
@@ -31,8 +31,17 @@ set_counter_B_to_0 '''
     """
 '''
 
-set_counter_C_to_1 '''
+set_counter_C_to_0 '
+    DC "0"
+    set_counter_C
+'
+
+set_counter_C_to_1 '
     DC "1"
+    set_counter_C
+'
+
+set_counter_C '''
     counter_C "DC"
     current_digit_C "DC"
     largest_digit_C "|DC"
@@ -160,6 +169,44 @@ add_C '''"""
     current_digit_C "DC"
 """'''
 
+check_2 '''
+    set_counter_B_to_0
+    bool_B "loop_B"
+    loop_B """
+        add_B
+        '"" ' counter_B ' "END_B"'
+        add_B
+        '"" ' counter_B ' "END_COMPOSITE"'
+        bool_B
+    """
+    loop_B
+    check_3
+'''
+
+check_3 '''
+    set_counter_B_to_0
+    set_counter_C_to_0
+    bool_B "loop_B"
+    loop_B """
+        add_B
+        '"" ' counter_B ' "END_B"'
+        add_B
+        '"" ' counter_B ' "END_B"'
+        add_B
+        '"" ' counter_B ' "END_COMPOSITE"'
+        add_C
+        bool_B
+    """
+    loop_B
+    "third_of_input " counter_C
+    "" third_of_input """END_PRIME '
+        bool_A ""
+        loop_B ""
+        / input " is a prime number."
+    '"""
+    loop_A
+'''
+
 loop_A '''''
     set_counter_B_to_0
     bool_B "loop_B"
@@ -185,7 +232,19 @@ loop_A '''''
         bool_B
     """""
     loop_B
-
+    add_A
+    '"" ' counter_A ' "END_PRIME"'
+    add_A
+    '"" ' counter_A ' "END_PRIME"'
+    set_counter_B_to_0
+    bool_B "loop_B"
+    loop_B
+    add_A
+    '"" ' counter_A ' "END_PRIME"'
+    add_A
+    '"" ' counter_A ' "END_PRIME"'
+    add_A
+    '"" ' counter_A ' "END_PRIME"'
     add_A
     '"" ' counter_A ' "END_PRIME"'
     bool_A
@@ -196,42 +255,51 @@ loop_A '''''
     bool_C ""
 '"""
 
-"" input """END_PRIME '
-    bool_A ""
-    / input " is a prime number."
-'"""
-
 "" input """END_COMPOSITE '
     bool_A ""
     bool_B ""
+    loop_A ""
+    loop_B ""
+    add_A ""
+    check_3 ""
     / input " is a composite number."
 '"""
 
 0is? '
-    loop_A ""
+    check_2 ""
     / "0 is neither prime nor composite."
 '
 
 1is? '
-    loop_A ""
+    check_2 ""
     / "1 is neither prime nor composite."
 '
 
 2is? '
-    loop_A ""
+    check_2 ""
     / "2 is a prime number."
 '
 
 3is? '
-    loop_A ""
+    check_2 ""
     / "3 is a prime number."
 '
 
+5is? '
+    check_2 ""
+    / "5 is a prime number."
+'
+
+7is? '
+    check_2 ""
+    / "7 is a prime number."
+'
+
 main '
-    set_counter_A_to_1
+    set_counter_A_to_5
     "" input "is?"
     bool_A "loop_A"
-    loop_A
+    check_2
 '
 
 main
