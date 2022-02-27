@@ -219,12 +219,12 @@ loop_A '''''
 
 2is? '
     loop_A ""
-    / "2 is prime."
+    / "2 is a prime number."
 '
 
 3is? '
     loop_A ""
-    / "3 is prime."
+    / "3 is a prime number."
 '
 
 main '
