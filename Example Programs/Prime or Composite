@@ -1,0 +1,240 @@
+comment "Type your number in the string next to the input variable below. Only works for non-negative integers."
+input "53"
+
+set_counter_A_to_1 '''
+    DA "1"
+    counter_A "DA"
+    current_digit_A "DA"
+    largest_digit_A "|DA"
+
+    |DA """
+        '"' largest_digit_A '| " largest_digit_A
+        ' largest_digit_A ' ""
+        ' current_digit_A '| "0"
+        counter_A current_digit_A "| " counter_A
+        largest_digit_A largest_digit_A "|"'
+    """
+'''
+
+set_counter_B_to_0 '''
+    DB "0"
+    counter_B "DB"
+    current_digit_B "DB"
+    largest_digit_B "|DB"
+
+    |DB """
+        '"' largest_digit_B '| " largest_digit_B
+        ' largest_digit_B ' ""
+        ' current_digit_B '| "0"
+        counter_B current_digit_B "| " counter_B
+        largest_digit_B largest_digit_B "|"'
+    """
+'''
+
+set_counter_C_to_1 '''
+    DC "1"
+    counter_C "DC"
+    current_digit_C "DC"
+    largest_digit_C "|DC"
+
+    |DC """
+        '"' largest_digit_C '| " largest_digit_C
+        ' largest_digit_C ' ""
+        ' current_digit_C '| "0"
+        counter_C current_digit_C "| " counter_C
+        largest_digit_C largest_digit_C "|"'
+    """
+'''
+
+add_A '''"""
+    0A '
+        """ current_digit_A """ "1"
+    '
+    1A '
+        """ current_digit_A """ "2"
+    '
+    2A '
+        """ current_digit_A """ "3"
+    '
+    3A '
+        """ current_digit_A """ "4"
+    '
+    4A '
+        """ current_digit_A """ "5"
+    '
+    5A '
+        """ current_digit_A """ "6"
+    '
+    6A '
+        """ current_digit_A """ "7"
+    '
+    7A '
+        """ current_digit_A """ "8"
+    '
+    8A '
+        """ current_digit_A """ "9"
+    '
+    9A '
+        """ current_digit_A """ "0"
+        |""" current_digit_A """
+        current_digit_A current_digit_A "|"
+        add_A
+    '
+    "" """ current_digit_A """ "A"
+    current_digit_A "DA"
+"""'''
+
+add_B '''"""
+    0B '
+        """ current_digit_B """ "1"
+    '
+    1B '
+        """ current_digit_B """ "2"
+    '
+    2B '
+        """ current_digit_B """ "3"
+    '
+    3B '
+        """ current_digit_B """ "4"
+    '
+    4B '
+        """ current_digit_B """ "5"
+    '
+    5B '
+        """ current_digit_B """ "6"
+    '
+    6B '
+        """ current_digit_B """ "7"
+    '
+    7B '
+        """ current_digit_B """ "8"
+    '
+    8B '
+        """ current_digit_B """ "9"
+    '
+    9B '
+        """ current_digit_B """ "0"
+        |""" current_digit_B """
+        current_digit_B current_digit_B "|"
+        add_B
+    '
+    "" """ current_digit_B """ "B"
+    current_digit_B "DB"
+"""'''
+
+add_C '''"""
+    0C '
+        """ current_digit_C """ "1"
+    '
+    1C '
+        """ current_digit_C """ "2"
+    '
+    2C '
+        """ current_digit_C """ "3"
+    '
+    3C '
+        """ current_digit_C """ "4"
+    '
+    4C '
+        """ current_digit_C """ "5"
+    '
+    5C '
+        """ current_digit_C """ "6"
+    '
+    6C '
+        """ current_digit_C """ "7"
+    '
+    7C '
+        """ current_digit_C """ "8"
+    '
+    8C '
+        """ current_digit_C """ "9"
+    '
+    9C '
+        """ current_digit_C """ "0"
+        |""" current_digit_C """
+        current_digit_C current_digit_C "|"
+        add_C
+    '
+    "" """ current_digit_C """ "C"
+    current_digit_C "DC"
+"""'''
+
+"" input """END_B '
+    bool_B ""
+    bool_C ""
+'"""
+
+"" input """END_PRIME '
+    bool_A ""
+    / input " is a prime number."
+'"""
+
+"" input """END_COMPOSITE '
+    bool_A ""
+    bool_B ""
+    / input " is a composite number."
+'"""
+
+loop_A '''''
+    set_counter_B_to_0
+    bool_B "loop_B"
+    loop_B """""
+        '"" ' counter_A ''' """END_C '
+            bool_C ""'
+        """'''
+        set_counter_C_to_1
+        bool_C "loop_C"
+
+        loop_C """
+            add_B
+            '"" ' counter_B ' "END_B"'
+            add_C
+            '"" ' counter_C ' "END_C"'
+            bool_C
+        """
+        loop_C
+        '"" ' counter_A """ 'END_C ""'"""
+
+        add_B
+        '"" ' counter_B ' "END_COMPOSITE"'
+        bool_B
+    """""
+    loop_B
+
+    add_A
+    '"" ' counter_A ' "END_PRIME"'
+    bool_A
+'''''
+
+0is? '
+    loop_A ""
+    / "0 is neither prime nor composite."
+'
+
+1is? '
+    loop_A ""
+    / "1 is neither prime nor composite."
+'
+
+2is? '
+    loop_A ""
+    / "2 is prime."
+'
+
+3is? '
+    loop_A ""
+    / "3 is prime."
+'
+
+main '
+    set_counter_A_to_1
+    set_counter_B_to_0
+    set_counter_C_to_1
+    "" input "is?"
+
+    bool_A "loop_A"
+    loop_A
+'
+
+main
