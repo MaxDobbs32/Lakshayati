@@ -207,38 +207,20 @@ check_3 '''
     loop_A
 '''
 
-loop_A '''''
+loop_A """
     set_counter_B_to_0
     bool_B "loop_B"
-    loop_B """""
-        '"" ' counter_A ''' """END_C '
-            bool_C ""'
-        """'''
-        set_counter_C_to_1
-        bool_C "loop_C"
-
-        loop_C """
-            add_B
-            '"" ' counter_B ' "END_B"'
-            add_C
-            '"" ' counter_C ' "END_C"'
-            bool_C
-        """
-        loop_C
-        '"" ' counter_A """ 'END_C ""'"""
-
-        add_B
-        '"" ' counter_B ' "END_COMPOSITE"'
-        bool_B
-    """""
     loop_B
+
     add_A
     '"" ' counter_A ' "END_PRIME"'
     add_A
     '"" ' counter_A ' "END_PRIME"'
+
     set_counter_B_to_0
     bool_B "loop_B"
     loop_B
+
     add_A
     '"" ' counter_A ' "END_PRIME"'
     add_A
@@ -248,12 +230,35 @@ loop_A '''''
     add_A
     '"" ' counter_A ' "END_PRIME"'
     bool_A
-'''''
+"""
 
 "" input """END_B '
     bool_B ""
     bool_C ""
 '"""
+
+loop_B """""
+    '"" ' counter_A ''' """END_C '
+        bool_C ""'
+    """'''
+    set_counter_C_to_1
+    bool_C "loop_C"
+
+    loop_C
+    '"" ' counter_A """ 'END_C ""'"""
+
+    add_B
+    '"" ' counter_B ' "END_COMPOSITE"'
+    bool_B
+"""""
+
+loop_C """
+    add_B
+    '"" ' counter_B ' "END_B"'
+    add_C
+    '"" ' counter_C ' "END_C"'
+    bool_C
+"""
 
 "" input """END_COMPOSITE '
     bool_A ""
