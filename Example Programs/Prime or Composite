@@ -160,22 +160,6 @@ add_C '''"""
     current_digit_C "DC"
 """'''
 
-"" input """END_B '
-    bool_B ""
-    bool_C ""
-'"""
-
-"" input """END_PRIME '
-    bool_A ""
-    / input " is a prime number."
-'"""
-
-"" input """END_COMPOSITE '
-    bool_A ""
-    bool_B ""
-    / input " is a composite number."
-'"""
-
 loop_A '''''
     set_counter_B_to_0
     bool_B "loop_B"
@@ -207,6 +191,22 @@ loop_A '''''
     bool_A
 '''''
 
+"" input """END_B '
+    bool_B ""
+    bool_C ""
+'"""
+
+"" input """END_PRIME '
+    bool_A ""
+    / input " is a prime number."
+'"""
+
+"" input """END_COMPOSITE '
+    bool_A ""
+    bool_B ""
+    / input " is a composite number."
+'"""
+
 0is? '
     loop_A ""
     / "0 is neither prime nor composite."
@@ -229,10 +229,7 @@ loop_A '''''
 
 main '
     set_counter_A_to_1
-    set_counter_B_to_0
-    set_counter_C_to_1
     "" input "is?"
-
     bool_A "loop_A"
     loop_A
 '
