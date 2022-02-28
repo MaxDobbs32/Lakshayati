@@ -236,11 +236,6 @@ loop_A """
     bool_A
 """
 
-"" input """END_B '
-    bool_B ""
-    bool_C ""
-'"""
-
 reset_loop_B '''''
     loop_B """""
         '"" ' counter_A ''' """END_C '
@@ -265,6 +260,11 @@ loop_C """
     '"" ' counter_C ' "END_C"'
     bool_C
 """
+
+"" input """END_B '
+    bool_B ""
+    bool_C ""
+'"""
 
 "" input """END_COMPOSITE '
     bool_A ""
