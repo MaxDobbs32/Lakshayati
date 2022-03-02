@@ -21,6 +21,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.*;
 import javax.swing.*;
@@ -512,20 +513,22 @@ class Lakshayati extends Thread {
                                 !code.getText().equals("/ \"Hello, world!\"")) {
                             if (most_recent_file.length() != 0) {
                                 try {
-                                    File file = new File(most_recent_file);
-                                    Scanner file_reader = new Scanner(file);
-                                    String code_string = "";
-                                    if (file_reader.hasNextLine()) {
-                                        code_string = file_reader.nextLine();
-                                        while (file_reader.hasNextLine()) {
-                                            code_string += "\n" + file_reader.nextLine();
+                                    BufferedReader file_reader = Files.newBufferedReader(
+                                            Paths.get(most_recent_file), StandardCharsets.UTF_8);
+                                    StringBuilder code_string = new StringBuilder();
+                                    String line = file_reader.readLine();
+                                    if (line != null) {
+                                        code_string.append(line);
+                                        line = file_reader.readLine();
+                                        while (line != null) {
+                                            code_string.append("\n").append(line);
+                                            line = file_reader.readLine();
                                         }
                                     }
                                     file_reader.close();
-                                    if (!code.getText().equals(code_string)) {
+                                    if (!code.getText().equals(code_string.toString()))
                                         bool_open_file = false;
-                                    }
-                                } catch (FileNotFoundException a) {
+                                } catch (Exception a) {
                                     bool_open_file = false;
                                 }
                             } else
@@ -544,19 +547,22 @@ class Lakshayati extends Thread {
                         }
                         if (bool_open_file) {
                             try {
-                                File file = new File(directory + input_file_name.getText() + ".txt");
-                                Scanner file_reader = new Scanner(file);
-                                String code_string = "";
-                                if (file_reader.hasNextLine()) {
-                                    code_string = file_reader.nextLine();
-                                    while (file_reader.hasNextLine()) {
-                                        code_string += "\n" + file_reader.nextLine();
+                                BufferedReader file_reader = Files.newBufferedReader(Paths.get(directory +
+                                        input_file_name.getText() + ".txt"), StandardCharsets.UTF_8);
+                                StringBuilder code_string = new StringBuilder();
+                                String line = file_reader.readLine();
+                                if (line != null) {
+                                    code_string.append(line);
+                                    line = file_reader.readLine();
+                                    while (line != null) {
+                                        code_string.append("\n").append(line);
+                                        line = file_reader.readLine();
                                     }
-                                    if (!code.getText().equals(code_string))
-                                        code.setText(code_string);
+                                    if (!code.getText().equals(code_string.toString()))
+                                        code.setText(code_string.toString());
                                 }
                                 file_reader.close();
-                            } catch (FileNotFoundException a) {
+                            } catch (Exception a) {
                                 JOptionPane.showMessageDialog(window, "“" + input_file_name.getText() +
                                                 "” does not exist\n\n“" + input_file_name.getText() + "”不存在\n\n“"
                                                 + input_file_name.getText() + "” no existe\n", "",
@@ -591,16 +597,20 @@ class Lakshayati extends Thread {
                             boolean bool_create = false;
                             File file = new File(directory + input_file_name.getText() + ".txt");
                             if (!file.createNewFile()) {
-                                Scanner file_reader = new Scanner(file);
-                                String code_string = "";
-                                if (file_reader.hasNextLine()) {
-                                    code_string = file_reader.nextLine();
-                                    while (file_reader.hasNextLine()) {
-                                        code_string += "\n" + file_reader.nextLine();
+                                BufferedReader file_reader = Files.newBufferedReader(Paths.get(directory +
+                                        input_file_name.getText() + ".txt"), StandardCharsets.UTF_8);
+                                StringBuilder code_string = new StringBuilder();
+                                String line = file_reader.readLine();
+                                if (line != null) {
+                                    code_string.append(line);
+                                    line = file_reader.readLine();
+                                    while (line != null) {
+                                        code_string.append("\n").append(line);
+                                        line = file_reader.readLine();
                                     }
                                 }
                                 file_reader.close();
-                                if (!code.getText().equals(code_string)) {
+                                if (!code.getText().equals(code_string.toString())) {
                                     Object[] options = {"Yes　要　Si", "No　不要"};
                                     int answer = JOptionPane.showOptionDialog(window,
                                             "Do you want to overwrite “" + input_file_name.getText() + "”?" +
@@ -615,7 +625,8 @@ class Lakshayati extends Thread {
                             } else
                                 bool_create = true;
                             if (bool_save) {
-                                PrintWriter writer = new PrintWriter(file);
+                                Writer writer =
+                                        new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
                                 writer.write(code.getText());
                                 writer.close();
                                 if (bool_create)
@@ -676,20 +687,23 @@ class Lakshayati extends Thread {
                         && !code.getText().equals("/ \"Hello, world!\"")) {
                     if (most_recent_file.length() != 0) {
                         try {
-                            File file = new File(most_recent_file);
-                            Scanner file_reader = new Scanner(file);
-                            String code_string = "";
-                            if (file_reader.hasNextLine()) {
-                                code_string = file_reader.nextLine();
-                                while (file_reader.hasNextLine()) {
-                                    code_string += "\n" + file_reader.nextLine();
+                            BufferedReader file_reader =
+                                    Files.newBufferedReader(Paths.get(most_recent_file), StandardCharsets.UTF_8);
+                            StringBuilder code_string = new StringBuilder();
+                            String line = file_reader.readLine();
+                            if (line != null) {
+                                code_string.append(line);
+                                line = file_reader.readLine();
+                                while (line != null) {
+                                    code_string.append("\n").append(line);
+                                    line = file_reader.readLine();
                                 }
                             }
                             file_reader.close();
-                            if (!code.getText().equals(code_string)) {
+                            if (!code.getText().equals(code_string.toString())) {
                                 bool_close_window = false;
                             }
-                        } catch (FileNotFoundException a) {
+                        } catch (Exception a) {
                             bool_close_window = false;
                         }
                     } else {
