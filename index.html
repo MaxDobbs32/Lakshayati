@@ -1,0 +1,465 @@
+<!--
+
+This software has been copyrighted
+by Maxine Dobbs in the fall of 2020.
+By using it in any way, you agree
+to the license as found on this
+webpage and at
+https://opensource.org/licenses/MIT
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Lakshayati</title>
+<h1><br>LAKSHAYATI<br><br></h1>
+<style>
+button {
+font-size: 30px;
+font-family: "Courier";
+}
+h1 {
+text-align: center;
+outline: 3px solid;
+outline-color: #0000ff;
+background-color: #40ffff;
+font-family: "Times New Roman";
+}
+#A {
+width: 48px;
+height: 48px;
+}
+#B {
+width: 48px;
+height: 48px;
+}
+#C {
+padding: 42px;
+}
+#D {
+width: 48px;
+height: 48px;
+}
+textarea {
+text-align: left;
+font-size: 24px;
+font-family: "Courier New", "Microsoft YaHei", "STXihei", "Arial Unicode MS", "Code2000";
+}
+p {
+padding-left: 48px;
+padding-right: 48px;
+font-size: 18px;
+font-family: "Times New Roman", "Microsoft YaHei", "STXihei", "Arial Unicode MS", "Code2000";
+}
+textarea.placeholder {
+color: #aaa;
+}
+u {
+color: #06f;
+line-height: 2;
+}
+html, body {
+margin: 0;
+padding: 0;
+}
+footer {
+outline: 2px solid gray;
+background-color: #E9E9E9; 
+bottom: 0;
+left: 0;
+right: 0;
+}
+@media (pointer:none), (pointer:coarse) {
+p {
+padding-left: 24px;
+padding-right: 24px;
+}
+html, body {
+width: 100%;
+}
+}
+</style>
+</head>
+<body>
+<br><p hidden>The software used in this website is copyrighted by Maxine Dobbs, and, by using this website or any part of the software it operates on, you agree to the following license:</p><p hidden>Copyright 2020 Maxine Dobbs</p><p hidden>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p><p hidden>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p><p hidden>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<div style="text-align:center;">
+<button id="B" onclick="b()">⁋</button>
+<label>　　　　</label>
+<button id="A" onclick="a()">▶</button><br><br><br>
+<textarea rows="9" cols="63" id="0" wrap="off">/ "Hello, world!"</textarea>
+<br><br><br>
+<textarea rows = "9" cols = "63" id="1" wrap="off" READONLY>Hello, world!</textarea>
+<br><br><br><br>
+<footer>
+<br>
+<br>
+<u onclick="u()">
+<p>By using this website, you agree to this license agreement</p>
+<p>使用本网站表示您已同意本许可协议 (英文版)</p>
+<p>Usando esto sitio web, usted acepta esto acuerde de licencia (en inglés)</p>
+</u><br>
+</footer>
+</div>
+<div id="C" hidden>
+<label>　　　</label>
+<button id="D" onclick="c()">←</button>
+</div>
+<style>
+@media (pointer:none), (pointer:coarse) {
+textarea {
+width: 88%;
+}
+}
+</style>
+<script>
+let d = false;
+let e = {};
+let f = [];
+const _0 = ['"', '“', '”', '„'];
+const _1 = ["'", "‘", "’", "‚"];
+const _2 = ["«", "»"];
+const _3 = ["‹", "›"];
+function g() {
+let y = 0;
+while (y < 251 && d && f.length !== 0 && f.length <= 32767) {
+let m = f[0];
+f.shift();
+if (m.length !== 2) {
+if (m[0]) {
+let l = m[1];
+for (let i = 2; i < m.length; i += 2) {
+if (m[i])
+l += m[i+1];
+else if (m[i+1] === "/" || m[i+1] === "／")
+l += e["/"];
+else if (e[m[i+1]] !== undefined)
+l += e[m[i+1]];
+}
+h(l + " ");
+}
+else {
+let l = "";
+for (let i = 2; i < m.length; i += 2) {
+if (m[i])
+l += m[i+1];
+else if (m[i+1] === "/" || m[i+1] === "／")
+l += e["/"];
+else if (e[m[i+1]] !== undefined)
+l += e[m[i+1]];
+}
+if (m[1] !== "/" && m[1] !== "／") {
+if (l !== "")
+e[m[1]] = l;
+else
+e[m[1]] = undefined;
+}
+else {
+e["/"] = l;
+document.getElementById("1").value = l;
+break;
+}
+}
+}
+else {
+if (m[0])
+h(m[1] + " ");
+else if (e[m[1]] !== undefined)
+h(e[m[1]] + " ");
+}
+y++;
+}
+if (d && f.length !== 0 && f.length <= 32767)
+setTimeout(g, 0);
+else {
+d = false;
+e = {};
+if (f.length > 32767) {
+document.getElementById("1").value = "Error: The recursion limit has been exceeded\n\n错误：已超过递归限制\n\nError: Se superó el límite de recursividad";
+}
+f = [];
+document.getElementById("A").innerHTML = "▶";
+}
+}
+function h(l) {
+f.splice(0, 0, []);
+let m;
+let n = true;
+let o = false;
+let p;
+let q = 0;
+let r;
+let s;
+let t;
+let v;
+let i = 0;
+while (d && i < l.length) {
+let w = l[i];
+if (n) {
+if (w === " " || w === "　" || w === "\t")
+i++;
+else if (w === "\n") {
+if (f[q].length !== 0) {
+q++;
+f.splice(q, 0, []);
+}
+i++;
+}
+else if (_0.includes(w)) {
+n = false;
+p = true;
+r = 1;
+t = _0;
+i++;
+}
+else if (_1.includes(w)) {
+n = false;
+p = true;
+r = 1;
+t = _1;
+i++;
+}
+else if (_2.includes(w)) {
+n = false;
+p = true;
+r = 1;
+t = _2;
+i++;
+}
+else if (_3.includes(w)) {
+n = false;
+p = true;
+r = 1;
+t = _3;
+i++;
+}
+else if (w === "「" || w === "『" || w === "《" || w === "〈") {
+n = false;
+p = false;
+r = 1;
+t = w;
+i++;
+}
+else if (w !== "」" && w !== "』" && w !== "》" && w !== "〉") {
+m = "";
+while (l[i] !== " " && l[i] !== "　" && l[i] !== "\t" && l[i] !== "\n") {
+if (_0.includes(l[i]) || _1.includes(l[i]) || _2.includes(l[i]) || _3.includes(l[i]) || l[i] === "「" || l[i] === "『" || l[i] === "《" || l[i] === "〈" || l[i] === "」" || l[i] === "』" || l[i] === "》" || l[i] === "〉") {
+document.getElementById("1").value = "Error: Spaces are required to separate strings and variables\n\n错误：需要空格来分隔字符串和变量\n\nError: Se requieren espacios para separar variables y cadenas de caracteres";
+d = false;
+break;
+}
+m += l[i];
+i++;
+}
+f[q].push(false, m);
+}
+else {
+document.getElementById("1").value = "Error: "+w+" cannot be used to start a string.\n\n错误："+w+"不能用来开始字符串\n\nError: "+w+" no se puede utilizar para iniciar una cadena de caracteres.";
+d = false;
+}
+}
+else if (p) {
+if (o) {
+if (t.includes(w)) {
+let j = 1;
+let x = m.length - 1;
+while (l[i-j] === "/" || l[i-j] === "／") {
+if (j % 2 === 1) {
+m = m.slice(0, x) + m.slice(x + 1, m.length);
+x--;
+}
+j++;
+}
+if (j % 2 === 1) {
+s--;
+v += w;
+}
+else {
+m += w;
+v = "";
+}
+}
+else {
+s = r;
+m += v + w;
+v = "";
+}
+if (s === 0) {
+w = l[i+1];
+if (w === " " || w === "　" || w === "\t" || w === "\n") {
+f[q].push(true, m);
+n = true;
+o = false;
+}
+else {
+document.getElementById("1").value = "Error: Spaces are required to separate strings and variables\n\n错误：需要空格来分隔字符串和变量\n\nError: Se requieren espacios para separar variables y cadenas de caracteres";
+d = false;
+}
+}
+i++;
+}
+else {
+if (t.includes(w)) {
+r++;
+i++;
+}
+else if (r % 2 === 1) {
+o = true;
+s = r;
+m = w;
+v = "";
+i++;
+}
+else {
+if (w === " " || w === "　" || w === "\t" || w === "\n") {
+f[q].push(true, "");
+n = true;
+o = false;
+}
+else {
+document.getElementById("1").value = "Error: Spaces are required to separate strings and variables\n\n错误：需要空格来分隔字符串和变量\n\nError: Se requieren espacios para separar variables y cadenas de caracteres";
+d = false;
+}
+}
+}
+}
+else {
+if (o) {
+if (w === t) {
+let j = 1;
+let x = m.length - 1;
+while (l[i-j] === "/" || l[i-j] === "／") {
+if (j % 2 === 1) {
+m = m.slice(0, x) + m.slice(x + 1, m.length);
+x--;
+}
+j++;
+}
+if (j % 2 === 1) {
+s--;
+v += w;
+}
+else {
+m += w;
+v = "";
+}
+}
+else {
+s = r;
+m += v + w;
+v = "";
+}
+if (s === 0) {
+w = l[i+1];
+if (w === " " || w === "　" || w === "\t" || w === "\n") {
+f[q].push(true, m);
+n = true;
+o = false;
+}
+else {
+document.getElementById("1").value = "Error: Spaces are required to separate strings and variables\n\n错误：需要空格来分隔字符串和变量\n\nError: Se requieren espacios para separar variables y cadenas de caracteres";
+d = false;
+}
+}
+i++;
+}
+else {
+if (w === t) {
+r++;
+i++;
+}
+else {
+if (w === "/" || w === "／") {
+let j = i;
+while (l[j] === "/" || l[j] === "／")
+j++;
+if (l[j] === t) {
+let k = 1;
+let x = j - 1;
+i++;
+while (l[j-k] === "/" || l[j-k] === "／") {
+if (k % 2 === 1) {
+l = l.slice(0, x) + l.slice(x + 1, l.length);
+x--;
+i--;
+}
+k++;
+}
+}
+}
+o = true;
+s = r;
+m = "";
+v = "";
+if (t === "「")
+t = "」";
+else if (t === "『")
+t = "』";
+else if (t === "《")
+t = "》";
+else
+t = "〉";
+}
+}
+}
+}
+if (d && !n) {
+document.getElementById("1").value = "Error: A string has not been terminated\n\n错误：字符串尚未终止\n\nError: No se ha minado una cadena de caracteres";
+d = false;
+}
+else if (f[q].length === 0) {
+f.splice(q, 1);
+}
+}
+function a() {
+if (!d) {
+e["/"] = "";
+f = [];
+document.getElementById("1").value = "";
+d = true;
+h(document.getElementById("0").value + " ");
+if (d && f.length !== 0 && f.length <= 32767) {
+document.getElementById("A").innerHTML = "■";
+g();
+}
+else {
+d = false;
+if (f.length > 32767)
+document.getElementById("1").value = "Error: Code is too long\n\n错误：代码太长\n\nError: El código es demasiado largo";
+}
+}
+else {
+d = false;
+document.getElementById("A").innerHTML = "▶";
+}
+}
+function b() {
+if (document.getElementById("B").innerHTML === "⁋") {
+document.getElementById("B").innerHTML = "¶";
+document.getElementById("0").style.textAlign = "right";
+document.getElementById("1").style.textAlign = "right";
+}
+else {
+document.getElementById("B").innerHTML = "⁋";
+document.getElementById("0").style.textAlign = "left";
+document.getElementById("1").style.textAlign = "left";
+}
+}
+function u() {
+document.getElementsByTagName('div')[0].style.display = "none";
+for (let i = 0; i < 5; i++)
+document.getElementsByTagName('P')[i].style.display = "block";
+document.getElementById("C").style.display = "block";
+}
+function c() {
+document.getElementById("C").style.display = "none";
+for (let i = 0; i < 5; i++)
+document.getElementsByTagName('P')[i].style.display = "none";
+document.getElementsByTagName('div')[0].style.display = "block";
+}
+</script>
+</body>
+</html>
