@@ -10,7 +10,7 @@ The role of string execution is more complex. By executing strings, programmers 
 
 With these three operations, I have proven Lakshayati is Turing-complete (i.e. it can theoretically perform any computable function). And, while I lack the linguistic expertise to show as much, this fact may suggest human beings can technically communicate any idea with little more than the building blocks of linguistics. In any case, I feel that Lakshayati is a unique programming language its own right, which is why I would like to document its features here.
 
-If you would like to test out the language for yourself, you can find an online interpreter at https://lakshayati.maxdobbs32.repl.co/.
+If you would like to test out the language for yourself, you can find an online interpreter at https://maxdobbs32.github.io/Lakshayati/
 
 If you like, you can download Lakshayati.jar to have an interpreter on your computer. In addition to running programs, this Java application is capable of opening and saving programs as .txt files. Lakshayati.jar can be run with the "java -jar Lakshayati.jar" command or by clicking it (if your setting for opening jar files is properly configured). Lakshayati.java contains the source code for this application.
 
